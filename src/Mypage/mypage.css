@@ -1,0 +1,43 @@
+body{
+    background-color: #00253e;
+    font-family: Arial, sans-serif;
+    color: white;
+    margin: 0px;
+    padding: 0 25% 0 25%;
+}
+
+header{
+    color: aqua;
+    background-color: #001a2c;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+header.logo{
+    width: 55px;
+    height: 55px;
+    margin-right: 20px;
+}
+
+main{
+    color: rgb(232, 231, 231);
+    height: auto;
+    padding: 20px;
+}
+
+main li::marker{
+    color: aqua;
+    font-size: 200%;
+}
+
+footer{
+    background-color: #001e31;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+}
