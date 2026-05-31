@@ -12,7 +12,8 @@ export default function Main(){
 
         const formData = new FormData(event.target)
         const ingredient = formData.get("ingredient")
-        setIngredients([...ingredients, ingredient]) // do not have to use the callback form of setIngredients
+        setIngredients([...ingredients, ingredient]) 
+        // do not have to use the callback form of setIngredients
         //  because we are not relying on the previous state to update the new state, 
         // we are just adding a new ingredient to the list of ingredients. 
         // If we were to rely on the previous state, 
