@@ -1,16 +1,18 @@
 import React from "react"
 
-export default function Main(){
-    const [ingredients, setIngredients] = React.useState([])
+export default function Main() {
+    const [ingredients, setIngredients] = React.useState(
+        ["all the main spices", "pasta", "ground beef", "tomato paste"]
+    )
 
     const ingredientsListItems = ingredients.map((ingredient, index) => (
-        <li key = {index}> {ingredient} </li>
+        <li key={index}> {ingredient} </li>
     ))
 
     // function handleSubmit(event) { 
     //     // one to handle the form submission on submit 
     //     // and add the new ingredient to the list of ingredients
-        
+
     //     event.preventDefault() // prevents the default form submission behavior
     //     const formData = new FormData(event.target)
     //     const ingredient = formData.get("ingredient")
@@ -26,7 +28,7 @@ export default function Main(){
     //     // because setIngredients is asynchronous and does not update the state immediately.
     // }
 
-    function   addIngredient(formData){
+    function addIngredient(formData) {
         /* This 2nd method to use action attribute to get all 
         form data in the function and do all the processing */
 
@@ -34,12 +36,17 @@ export default function Main(){
         setIngredients([...ingredients, ingredient])
     }
 
+    const [recipeShown, setRecipeShown] = React.useState(false)
+    function toggleRecipeShown(){
+        setRecipeShown(true)
+    }
 
-    return(
+
+    return (
         <main>
-            <form action= {addIngredient} className="add-ingredient-form">
-                <input 
-                    type="text" 
+            <form action={addIngredient} className="add-ingredient-form">
+                <input
+                    type="text"
                     name="ingredient"
                     placeholder="e.g: Rice"
                 />
@@ -49,15 +56,22 @@ export default function Main(){
                 <section>
                     <h2>Ingredients on hand:</h2>
                     <ul className="ingredients-list" aria-live="polite">{ingredientsListItems}</ul>
-                    <div className="get-recipe-container">
+                    {ingredients.length > 3 && <div className="get-recipe-container">
                         <div>
                             <h3>Ready for a recipe?</h3>
                             <p>Generate a recipe from your list of ingredients.</p>
                         </div>
-                        <button>Get a recipe</button>
-                    </div>
+                        <button onClick={toggleRecipeShown}>Get a recipe</button>
+                    </div>}
                 </section>
             }
+
+            {recipeShown && (
+                <section>
+                    <h2>Chef Claude Recommends:</h2>
+                    <p>Here's a delicious recipe you can make with your ingredients!</p>
+                </section>
+            )}
         </main>
     )
 }
